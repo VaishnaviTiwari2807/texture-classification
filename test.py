@@ -10,9 +10,9 @@ import numpy
 import torch
 from torch.utils.tensorboard import SummaryWriter
 
-class dtdcl(nn.Module):
-    def __5init__(self, num_classes):
-        super(dtdcl, self).__init__()
+class DEPNet(nn.Module):
+    def __init__(self, num_classes):
+        super(DEPNet, self).__init__()
         self.conv_layers = nn.Sequential(
             nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
