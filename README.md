@@ -1,5 +1,5 @@
 # texture-classification
-INTRODUCTION
+#INTRODUCTION
 For image classification applications, convolutional neural networks (CNNs) are a typical type of neural
 network architecture. In this project, we'll use PyTorch to train a CNN using the Describable Textures
 Dataset (DTD). To comprehend how the network learns to represent textures, we will display intermediate
@@ -7,24 +7,24 @@ values. We will also investigate the implications of underfitting and overfittin
 network called a convolutional neural network (CNN) is made to handle data having a known grid-like
 architecture, such as photographs. Traditional machine learning models are outperformed by CNNs in
 image classification and other computer vision tasks.
-DATASET
+#DATASET
 A collection of textures, each falling under one of 47 categories, can be found in the Describable Textures
 Dataset (DTD). 5640 photos having a dimension of 640 by 480 pixels are included in the dataset. We will
 resize the photos to 224 by 224 pixels for this project.
 Training a CNN
 The following steps are involved in training a CNN:
-● Preprocessing the data entails shrinking the photos to a set size and normalizing the pixel values
+#● Preprocessing the data entails shrinking the photos to a set size and normalizing the pixel values
 in order to prepare the input data.
-● The CNN architecture is as follows: Convolutional layers, activation algorithms (like ReLU), and
+#● The CNN architecture is as follows: Convolutional layers, activation algorithms (like ReLU), and
 pooling layers are what make up a CNN. Before the output is formed, one or more completely
 connected layers are frequently passed through to create the final output.
-● After the CNN architecture has been established, the model is assembled using a loss function, an
+#● After the CNN architecture has been established, the model is assembled using a loss function, an
 optimizer, and metrics.
-● Model training: Using backpropagation and batches of data, the model is trained. Every epoch,
+#● Model training: Using backpropagation and batches of data, the model is trained. Every epoch,
 the loss is calculated and utilized to modify the model's parameters.
-● Model evaluation: Following training, the model is assessed on a test set to determine its
+#● Model evaluation: Following training, the model is assessed on a test set to determine its
 accuracy.
-Base Model(task1)
+#Base Model(task1)
 The provided model is a deep convolutional neural network (CNN) for image classification, with output
 classes of 47 and input picture dimensions of 224 × 224.
 The convolutional layers and the fully connected layers are the two key parts of the model.
@@ -45,12 +45,12 @@ size equal to the number of output classes (47).
 There are a total of 526,823 parameters for the model to learn.
 Result: This model was run for 50 epoch and results in 10.6915% training accuracy and 7.55% testing
 accuracy.
-Underfitting(task2) :I use the same model for 20 iterations, but if the dataset is vast and complex, it might not
+#Underfitting(task2) :I use the same model for 20 iterations, but if the dataset is vast and complex, it might not
 have enough time to understand the pattern of the data. In this scenario, the model won't perform well on
 either the training or validation sets, and the metrics for accuracy and loss won't considerably improve. It
 is therefore an instance of underfitting.
 Result: For 20 epoch the training accuracy and testing accuracy are 5.0000% and 4.68% respectively
-Overfitting(task3): I used the model with 100 epochs, when the model trains on the training data for an
+#Overfitting(task3): I used the model with 100 epochs, when the model trains on the training data for an
 excessively long time and begins to memorize it, it overfits due to additional epochs and loses its ability
 to generalize to new data. In turn, this causes the model to perform well on training data but badly on
 validation or test data.
