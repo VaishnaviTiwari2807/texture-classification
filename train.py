@@ -10,7 +10,6 @@ import numpy
 import torch
 from torch.utils.tensorboard import SummaryWriter
 
-
 transform = transforms.Compose([transforms.Resize((224,224)),
                                      transforms.ToTensor(),
                                      transforms.Normalize(mean=[0.4914, 0.4822, 0.4465],
@@ -28,12 +27,12 @@ test_loader = data.DataLoader(dtd_dataset_test, batch_size=batch_size, shuffle=T
 
 num_classes = 47
 learning_rate = 0.01
-num_epochs = 50
+num_epochs = 20
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-class DEPNet(nn.Module):
-    def _init_(self, num_classes):
-        super(DEPNet, self)._init_()
+class dtdcl(nn.Module):
+    def __init__(self, num_classes):
+        super(dtdcl, self).__init__()
         self.conv_layers = nn.Sequential(
             nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
@@ -59,7 +58,7 @@ class DEPNet(nn.Module):
        return x
 
 # Set Loss function with criterion
-model = DEPNet(num_classes).to(device)
+model = dtdcl(num_classes).to(device)
 
 criterion = nn.CrossEntropyLoss()
 
@@ -67,8 +66,10 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, weight_decay = 0.005, momentum = 0.9)  
 
 total_step = len(train_loader)
-writer = SummaryWriter('./logs')
 # We use the pre-defined number of epochs to determine how many iterations to train the network on
+
+writer = SummaryWriter('./logs')
+
 for epoch in range(num_epochs):
 	#Load in the data in batches using the train_loader object
     correct_pred = 0
@@ -114,6 +115,6 @@ torch.save(test_loader, './test_loader.pt')
 #         correct += torch.eq(predicted, labels).sum().item()
     
 #     acc = 100 * correct / total
-#     writer.add_scalar('Loss/Test', test_loss, epoch)
+#     # writer.add_scalar('Loss/Test', test_loss, epoch)
 #     writer.add_scalar('Accuracy/Test', acc)
 #     print('Accuracy of the network on the {} train images: {} %'.format(50000, acc))
